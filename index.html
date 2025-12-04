@@ -9,228 +9,236 @@
     <!-- 保留原有样式文件 -->
     <link href="static/css/style.css" rel="stylesheet" type="text/css">
     
-    <!-- === AI 强力修复版样式 === -->
+    <!-- === AI 最终完美版样式 === -->
     <style>
-        /* 0. 基础重置：防止原有 padding/border 计算导致换行 */
-        * {
-            box-sizing: border-box;
-        }
+        /* 0. 基础重置 */
+        * { box-sizing: border-box; outline: none; }
 
-        /* 1. 全局背景：淡青色 */
+        /* 1. 全局背景 */
         body {
             background-color: #e0f7fa;
-            background-image: linear-gradient(180deg, #e0f7fa 0%, #f1f8e9 100%);
+            background-image: linear-gradient(180deg, #e0f7fa 0%, #f0f4c3 100%);
             background-attachment: fixed;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             color: #333;
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
         }
 
-        /* 2. 容器强力修复 (解决布局乱套的核心) */
+        /* 2. 容器修正 */
         .inner-center, .main, .content-inside {
             width: 100% !important;
             max-width: 1200px !important;
             margin: 0 auto !important;
-            float: none !important; /* 清除所有浮动 */
+            float: none !important;
             padding: 0 !important;
             display: block !important;
-            position: relative !important;
         }
-        
-        .main {
-            padding-top: 40px !important; /* 给顶部留空间 */
-            padding-bottom: 40px !important;
-        }
+        .main { padding-top: 50px !important; }
 
-        /* 3. 顶部文字：绝对居中 */
+        /* === 3. 顶部文字强力居中 === */
         .logo-box {
+            display: flex !important;
+            justify-content: center !important; /* 水平居中 */
+            align-items: center !important;     /* 垂直居中 */
             width: 100% !important;
-            text-align: center !important;
-            display: block !important; /* 不用 flex，改用 block 防止跑偏 */
-            margin-bottom: 40px !important;
+            margin: 0 auto 50px auto !important;
+            position: relative !important;
             float: none !important;
         }
         
-        /* 隐藏旧的 logo 图片容器 */
-        .logo-left {
-            display: none !important;
-        }
+        .logo-left { display: none !important; } /* 彻底隐藏旧Logo图 */
 
         .logo-right {
-            display: inline-block !important;
-            float: none !important;
             text-align: center !important;
             width: auto !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: block !important;
         }
 
         .logo-right span {
-            font-size: 36px !important;
-            color: #006064 !important;
+            font-size: 38px !important;
+            color: #006064 !important; /* 深青色 */
             font-weight: 700;
-            letter-spacing: 8px;
-            text-shadow: 0 2px 4px rgba(0, 96, 100, 0.1);
-            line-height: 1.5;
-        }
-
-        /* 4. 搜索框美化：居中 */
-        .search-section {
-            width: 90% !important; /* 手机上留余地 */
-            max-width: 680px !important;
-            margin: 0 auto 50px auto !important;
-            position: relative;
-            float: none !important;
+            letter-spacing: 10px; /* 大气的字间距 */
+            text-shadow: 0 4px 8px rgba(0, 96, 100, 0.15);
+            line-height: 1.2;
             display: block !important;
         }
+
+        /* === 4. 搜索栏深度优化 (胶囊型一体化) === */
+        .search-section {
+            width: 90% !important;
+            max-width: 720px !important;
+            margin: 0 auto 60px auto !important;
+            position: relative !important;
+            height: 60px !important;
+            float: none !important;
+        }
+
+        .search-left {
+            width: 100% !important;
+            height: 100% !important;
+            float: none !important;
+        }
+
+        /* 外部大白条（实际上是 Input 的容器） */
         .input-wrap {
-            border: 2px solid #b2dfdb !important;
-            background-color: rgba(255, 255, 255, 0.95) !important;
-            border-radius: 12px !important;
-            box-shadow: 0 8px 20px rgba(0, 96, 100, 0.08);
-            height: 54px !important;
+            width: 100% !important;
+            height: 100% !important;
+            background-color: #ffffff !important;
+            border-radius: 50px !important; /* 胶囊圆角 */
+            box-shadow: 0 8px 25px rgba(0, 96, 100, 0.1) !important;
+            border: 1px solid #ffffff !important;
             display: flex !important;
             align-items: center !important;
-            width: 100% !important;
-        }
-        .input-wrap:hover {
-            border-color: #26c6da !important;
-            box-shadow: 0 10px 25px rgba(38, 198, 218, 0.15);
-        }
-        .search-input {
-            border: none !important;
-            height: 100% !important;
-            flex-grow: 1 !important;
-            padding: 0 20px !important;
-            font-size: 16px !important;
-            background: transparent !important;
-            outline: none !important;
-            color: #455a64 !important;
-        }
-        .search-submit {
-            background: linear-gradient(135deg, #42a5f5, #1e88e5) !important;
-            border-radius: 0 10px 10px 0 !important;
-            color: white !important;
-            height: 54px !important;
-            width: 100px !important;
-            border: none !important;
-            font-size: 16px !important;
-            font-weight: bold;
-            cursor: pointer;
-            margin: 0 !important;
-            position: absolute !important;
-            right: 0;
-            top: 0;
+            /* 为内部的图标和按钮留出空间 */
+            padding-left: 60px !important; 
+            padding-right: 120px !important;
+            position: relative !important;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* 5. 导航卡片布局：强制 Grid 3列 */
+        /* 悬停/输入时的光晕效果 */
+        .input-wrap:hover, .input-wrap:focus-within {
+            box-shadow: 0 10px 30px rgba(38, 198, 218, 0.25) !important;
+            transform: translateY(-2px);
+        }
+
+        /* 搜索输入框本体 */
+        .search-input {
+            width: 100% !important;
+            height: 100% !important;
+            background: transparent !important;
+            border: none !important;
+            font-size: 18px !important; /* 更大的字号 */
+            color: #455a64 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        /* 搜索引擎图标 (强制放到左边) */
+        .search-logo {
+            position: absolute !important;
+            left: 20px !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            width: 30px !important;
+            height: 30px !important;
+            background-color: transparent !important; /* 去掉灰色背景 */
+            border: none !important;
+            z-index: 5 !important;
+            opacity: 0.8;
+            /* 如果原图是背景图，这里保持显示 */
+        }
+
+        /* 搜索按钮 (强制放到右边内部) */
+        .search-submit {
+            position: absolute !important;
+            right: 6px !important;
+            top: 6px !important;
+            height: calc(100% - 12px) !important; /* 留出边距 */
+            width: 100px !important;
+            background: linear-gradient(135deg, #29b6f6, #0288d1) !important;
+            border-radius: 40px !important;
+            color: white !important;
+            border: none !important;
+            font-size: 16px !important;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer !important;
+            box-shadow: 0 4px 10px rgba(2, 136, 209, 0.3);
+            transition: transform 0.2s;
+        }
+        .search-submit:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #03a9f4, #0277bd) !important;
+        }
+
+        /* 5. 导航卡片布局 (保持3列) */
         .nav-content {
             display: grid !important;
-            grid-template-columns: repeat(3, 1fr) !important; /* 强制3列等宽 */
+            grid-template-columns: repeat(3, 1fr) !important;
             gap: 25px !important;
             width: 100% !important;
-            padding: 0 20px !important; /* 防止贴边 */
+            padding: 0 20px !important;
             float: none !important;
-            clear: both !important;
         }
 
-        /* 卡片样式 */
         .jj-list {
             background: #ffffff !important;
-            border-radius: 12px !important;
-            padding: 20px !important;
-            box-shadow: 0 10px 30px rgba(0, 96, 100, 0.04) !important;
-            border: 1px solid rgba(255, 255, 255, 0.8) !important;
-            float: none !important;
-            width: auto !important;
+            border-radius: 16px !important; /* 更圆润 */
+            padding: 24px !important;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03) !important;
+            border: 1px solid rgba(255, 255, 255, 0.5) !important;
             margin: 0 !important;
-            transition: transform 0.3s ease;
+            width: auto !important;
+            transition: transform 0.3s;
         }
         .jj-list:hover {
             transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06) !important;
         }
 
-        /* 标题 */
         .jj-list-tit {
             font-size: 17px !important;
-            color: #263238 !important;
+            color: #37474f !important;
             font-weight: 700 !important;
             margin-bottom: 20px !important;
             border-bottom: none !important;
-            text-align: left !important;
-            display: block !important;
+            display: flex;
+            align-items: center;
         }
 
-        /* 按钮容器：内部也是 Grid */
         .jj-list-con {
             display: grid !important;
-            grid-template-columns: repeat(3, 1fr) !important; /* 按钮也强制3列 */
+            grid-template-columns: repeat(3, 1fr) !important;
             gap: 12px !important;
             padding: 0 !important;
             margin: 0 !important;
             list-style: none !important;
         }
-        .jj-list-con li {
-            display: block !important;
-            width: 100% !important;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
+        
+        .jj-list-con li { margin: 0 !important; padding: 0 !important; width: 100% !important; }
 
-        /* 6. 按钮样式 (微调：极淡的灰青色，消除突兀感) */
+        /* 按钮微调：更淡、更优雅 */
         .jj-list-link {
             display: flex !important;
             justify-content: center;
             align-items: center;
             width: 100% !important;
-            height: 38px !important;
-            
-            /* 正常状态：极淡色，甚至接近透明白 */
-            background-color: #f7fcfc !important; 
-            border: 1px solid #e0f2f1 !important;
-            color: #607d8b !important;
-            
-            border-radius: 6px !important;
+            height: 40px !important;
+            background-color: #f5f7f8 !important; /* 极淡灰 */
+            color: #546e7a !important;
+            border-radius: 8px !important;
             font-size: 13px !important;
             text-decoration: none !important;
             transition: all 0.2s ease !important;
-            white-space: nowrap !important;
-            overflow: hidden !important;
+            border: 1px solid transparent !important;
         }
-
-        /* 鼠标悬停：变色 */
         .jj-list-link:hover {
-            background-color: #26c6da !important;
+            background-color: #4dd0e1 !important; /* 青色高亮 */
             color: white !important;
-            border-color: #26c6da !important;
-            box-shadow: 0 4px 10px rgba(38, 198, 218, 0.3);
+            box-shadow: 0 5px 15px rgba(77, 208, 225, 0.4);
         }
 
-        /* === 响应式适配 === */
-        /* 平板尺寸 (<900px) 显示2列 */
+        /* 响应式 */
         @media (max-width: 900px) {
-            .nav-content {
-                grid-template-columns: repeat(2, 1fr) !important;
-            }
+            .nav-content { grid-template-columns: repeat(2, 1fr) !important; }
         }
-        /* 手机尺寸 (<600px) 显示1列 */
         @media (max-width: 600px) {
-            .nav-content {
-                grid-template-columns: 1fr !important;
-            }
-            .logo-right span {
-                font-size: 24px !important;
-                letter-spacing: 2px !important;
-            }
+            .nav-content { grid-template-columns: 1fr !important; }
+            .logo-right span { font-size: 28px !important; letter-spacing: 4px !important; }
+            .search-section { height: 50px !important; }
+            .search-submit { width: 80px !important; font-size: 14px !important; }
+            .input-wrap { padding-right: 90px !important; }
         }
 
-        /* 底部 */
         .footer {
             text-align: center !important;
             margin-top: 60px !important;
-            padding-bottom: 20px !important;
-            color: #90a4ae !important;
-            float: none !important;
-            width: 100% !important;
+            padding-bottom: 30px !important;
+            color: #b0bec5 !important;
         }
     </style>
 
@@ -248,7 +256,7 @@
 <body>
 <div class="inner-center main">
   <div class="content-inside">
-    <!-- slogan start (已修改：去除图片，文字居中) -->
+    <!-- slogan start -->
     <div class="logo-box">
       <div class="logo-right">
         <span>只言片语，可寻万物</span>
@@ -259,8 +267,12 @@
     <!-- 搜索框 start -->
     <div id="search_form" class="search-section" target="_blank">
       <div class="search-left">
-        <div id="search_logo" data-type="google" class="search-logo"></div>
+        <!-- Input Wrap 现在包含了图标和输入框，看起来像一个整体 -->
         <div class="input-wrap">
+          <!-- 搜索图标 -->
+          <div id="search_logo" data-type="google" class="search-logo"></div>
+          
+          <!-- 输入框 -->
           <input id="search_keyword"
                 class="search-input"
                 name="keyword"
@@ -268,14 +280,18 @@
                 autocomplete="off"
                 type="text"
                 placeholder="不懂么？不懂就搜，给老子搜！">
-          <div class="clear-keyword" id="clear_keyword" title="清空">x</div>
+          
+          <!-- 清空按钮 -->
+          <div class="clear-keyword" id="clear_keyword" title="清空" style="display:none;">x</div>
         </div>
-        <!-- 搜索结果 (隐藏备用选项) -->
+        
+        <!-- 隐藏的搜索引擎选择列表 -->
         <ul id="search_methods" class="search-methods" style="display:none;">
           <li data-type="google" class="search-item google">谷歌</li>
         </ul>
         <ul id="search_result" class="search-result"></ul>
       </div>
+      <!-- 提交按钮 -->
       <input class="search-submit" value="寻一下" id="search_submit" type="submit">
     </div>
     <!-- 搜索框 end -->
