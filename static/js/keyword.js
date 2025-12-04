@@ -6,7 +6,7 @@ $(function () {
       localStorage.setItem('SearchType', type);
     },
     get: function () {
-      return localStorage.getItem('SearchType') || 'baidu';
+      return localStorage.getItem('SearchType') || 'google';
     },
   };
 
@@ -134,18 +134,7 @@ $(function () {
     $(document).trigger(EVENT_CLEAR_KEYWORD);
   });
 
-  // 点击高亮显示
-  $('#search_keyword').on('focus',  function () {
-    $('.search-left').css(
-      {
-        "border-style":"solid",
-        "border-color": "rgba(24, 144, 255, 1)",
-        "box-shadow": "0px 0px 2px 1px rgba(145, 213, 255, 0.96)",
-      }
-    );
-  }).on('blur',  function () {
-    $('.search-left').prop('style','');
-  });
+  // 使用 CSS 的 :focus-within / 样式高亮，移除 JS 直接操作样式以避免黑框问题
   // 搜索
   $('#search_submit').on('click', function () {
     var keyword = $('#search_keyword').val();
@@ -154,7 +143,7 @@ $(function () {
       return item.type === type;
     });
     if (baseUrl && keyword) {
-      window.open(baseUrl.url + keyword);
+      window.open(baseUrl.url + encodeURIComponent(keyword), '_blank');
     }
   });
 
@@ -257,7 +246,7 @@ $(function () {
       return item.type === type;
     });
     if (baseUrl && keyword) {
-      window.open(baseUrl.url + keyword, keyword);
+      window.open(baseUrl.url + encodeURIComponent(keyword), '_blank');
     }
   }
 });

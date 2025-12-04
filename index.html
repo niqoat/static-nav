@@ -166,19 +166,21 @@
         }
 
         .jj-list {
-            background: #ffffff !important;
-            border-radius: 16px !important; /* 更圆润 */
+            background: linear-gradient(135deg, #ffffff 0%, #f0fafb 100%) !important;
+            border-radius: 16px !important;
             padding: 24px !important;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03) !important;
-            border: 1px solid rgba(255, 255, 255, 0.5) !important;
+            box-shadow: 0 8px 24px rgba(0, 96, 100, 0.08) !important;
+            border: 1px solid rgba(0, 176, 180, 0.1) !important;
             margin: 0 !important;
             width: auto !important;
-            transition: transform 0.3s;
+            transition: all 0.3s;
         }
         .jj-list:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06) !important;
+            background: linear-gradient(135deg, #ffffff 0%, #e8f8f9 100%) !important;
+            box-shadow: 0 12px 32px rgba(0, 96, 100, 0.12) !important;
+            transform: translateY(-4px);
         }
+
 
         .jj-list-tit {
             font-size: 17px !important;
@@ -287,7 +289,12 @@
         
         <!-- 隐藏的搜索引擎选择列表 -->
         <ul id="search_methods" class="search-methods" style="display:none;">
-          <li data-type="google" class="search-item google">谷歌</li>
+          <li data-type="baidu" class="search-item baidu">百度</li>
+          <li data-type="sogou" class="search-item sogou">搜狗</li>
+          <li data-type="bing" class="search-item bing">Bing</li>
+          <li data-type="so" class="search-item so">360搜</li>
+          <li data-type="google" class="search-item google">Google</li>
+          <li data-type="wangpan" class="search-item wangpan">网盘搜索</li>
         </ul>
         <ul id="search_result" class="search-result"></ul>
       </div>

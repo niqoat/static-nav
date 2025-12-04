@@ -96,10 +96,10 @@ textarea {
 }
 .search-left {
     display: flex;
-    width: 877px;
+    width: 100%;
     height: 54px;
     line-height: 20px;
-    border: 1px solid rgba(217, 217, 217, 0.96);
+    border: none; /* 移除默认边框，使用外层 input-wrap 的样式 */
 }
 .search-logo {
     width: 40px;
