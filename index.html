@@ -9,9 +9,9 @@
     <!-- 保留原有样式文件 -->
     <link href="static/css/style.css" rel="stylesheet" type="text/css">
     
-    <!-- === AI 修正后的美化样式 (修复布局错乱) === -->
+    <!-- === AI 强力修复样式 (使用 Grid 强制布局) === -->
     <style>
-        /* 1. 全局背景：淡青色 */
+        /* 1. 全局背景优化 */
         body {
             background-color: #e0f7fa;
             background-image: linear-gradient(180deg, #e0f7fa 0%, #e8f5e9 100%);
@@ -20,103 +20,129 @@
             color: #333;
         }
 
-        /* 2. 布局容器修复 */
+        /* 2. 布局容器修正 */
         .inner-center {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            width: 100% !important;
+            max-width: 1200px !important; /* 限制最大宽度，防止在大屏太宽 */
+            margin: 0 auto !important;
+            padding: 20px 10px !important;
+            box-sizing: border-box !important;
         }
 
-        /* 3. Logo 和 Slogan */
+        /* 3. Logo 和 Slogan 居中 */
         .logo-box {
-            text-align: center;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: center !important;
+            align-items: center !important;
+            margin-bottom: 30px !important;
+            float: none !important; /* 清除原有浮动 */
+        }
+        .logo-left img {
+            height: 60px !important;
+            width: auto !important;
+            margin-right: 15px;
         }
         .logo-right span {
-            font-size: 28px;
-            color: #006064;
+            font-size: 26px !important;
+            color: #006064 !important;
             font-weight: bold;
             letter-spacing: 2px;
         }
 
-        /* 4. 搜索框美化 (保持原有位置，增加阴影) */
+        /* 4. 搜索框美化 */
         .search-section {
-            margin-bottom: 40px;
+            width: 100% !important;
+            max-width: 700px !important;
+            margin: 0 auto 40px auto !important;
             position: relative;
+            float: none !important;
         }
         .input-wrap {
             border: 2px solid #b2dfdb !important;
             background-color: #fff !important;
-            border-radius: 8px !important; /* 稍微圆角，不完全圆 */
+            border-radius: 8px !important;
             box-shadow: 0 4px 12px rgba(0, 96, 100, 0.1);
-            height: 50px;
-            display: flex;
-            align-items: center;
+            height: 50px !important;
+            display: flex !important;
+            align-items: center !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
         }
         .search-input {
-            font-size: 16px;
-            color: #333;
+            border: none !important;
+            height: 100% !important;
+            flex-grow: 1 !important;
+            padding: 0 15px !important;
+            font-size: 16px !important;
+            background: transparent !important;
+            outline: none !important;
         }
         .search-submit {
-            background-color: #2979ff !important; /* 原图那种亮蓝色按钮 */
+            background-color: #2979ff !important;
             border-radius: 0 8px 8px 0 !important;
             color: white !important;
-            height: 54px; /* 对齐高度 */
-            top: -2px; /* 微调位置 */
-            font-weight: bold;
-            letter-spacing: 1px;
-            transition: background 0.3s;
+            height: 50px !important; /* 确保高度一致 */
+            width: 100px !important;
+            border: none !important;
+            font-size: 16px !important;
+            cursor: pointer;
+            margin: 0 !important;
+            position: absolute !important;
+            right: 0;
+            top: 0;
         }
         .search-submit:hover {
             background-color: #1565c0 !important;
         }
 
-        /* === 5. 核心布局修复：完全还原原图的网格结构 === */
+        /* === 5. 核心布局修复：使用 Grid 彻底重构 === */
         
-        /* 大容器：模拟瀑布流或分栏布局 */
+        /* 强制主容器为 Grid 布局，3列 */
         .nav-content {
-            column-count: 3; /* 电脑端显示3列 */
-            column-gap: 20px;
-        }
-        @media (max-width: 900px) {
-            .nav-content { column-count: 2; } /* 平板2列 */
-        }
-        @media (max-width: 600px) {
-            .nav-content { column-count: 1; } /* 手机1列 */
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important; /* 强制3列等宽 */
+            gap: 20px !important; /* 卡片间距 */
+            width: 100% !important;
+            box-sizing: border-box !important;
+            /* 清除旧样式干扰 */
+            float: none !important;
+            height: auto !important;
         }
 
-        /* 单个分类卡片 */
+        /* 强制卡片样式 */
         .jj-list {
-            background: rgba(255, 255, 255, 0.85); /* 半透明白底 */
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            break-inside: avoid; /* 防止卡片被断开 */
-            border: 1px solid #e0f2f1;
+            width: auto !important; /* 自动填充格子 */
+            float: none !important;
+            margin: 0 !important;
+            background: rgba(255, 255, 255, 0.9) !important;
+            border-radius: 10px !important;
+            padding: 20px !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;
+            border: 1px solid #e0f2f1 !important;
+            height: fit-content !important; /* 高度自适应内容 */
         }
 
         /* 分类标题 */
         .jj-list-tit {
-            font-size: 16px;
-            color: #37474f;
-            font-weight: 700;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
+            font-size: 16px !important;
+            color: #37474f !important;
+            font-weight: 700 !important;
+            margin-bottom: 15px !important;
+            border-bottom: 1px solid #eee !important;
+            padding-bottom: 8px !important;
+            text-align: left !important;
         }
 
-        /* === 关键修复：强制内部链接为 3 列网格 === */
+        /* 强制内部按钮为 Grid 布局，3列 */
         .jj-list-con {
             display: grid !important;
-            grid-template-columns: repeat(3, 1fr) !important; /* 强制3列均分 */
-            gap: 10px !important; /* 按钮之间的间距 */
+            grid-template-columns: repeat(3, 1fr) !important; /* 强制3列 */
+            gap: 10px !important; /* 按钮间距 */
             padding: 0 !important;
             margin: 0 !important;
+            list-style: none !important;
+            width: 100% !important;
         }
 
         .jj-list-con li {
@@ -124,40 +150,64 @@
             width: 100% !important;
             margin: 0 !important;
             padding: 0 !important;
+            float: none !important;
         }
 
-        /* 链接按钮样式 (还原原图的方块感) */
+        /* 按钮样式 */
         .jj-list-link {
-            display: block !important;
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
             width: 100% !important;
-            box-sizing: border-box; /* 确保内边距不撑大盒子 */
-            background-color: #e1f5fe; /* 浅蓝色背景 (类似原图) */
-            color: #455a64;
-            text-align: center;
-            padding: 8px 5px;
-            border-radius: 4px;
-            font-size: 13px;
-            text-decoration: none;
-            transition: all 0.2s;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis; /* 文字太长显示省略号 */
+            height: 36px !important;
+            background-color: #e1f5fe !important; /* 浅蓝底 */
+            color: #455a64 !important;
+            border-radius: 4px !important;
+            font-size: 13px !important;
+            text-decoration: none !important;
+            transition: all 0.2s !important;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            box-sizing: border-box !important;
+            padding: 0 5px !important;
         }
 
-        /* 鼠标悬停效果 */
         .jj-list-link:hover {
-            background-color: #29b6f6; /* 悬停变亮蓝 */
-            color: white;
+            background-color: #29b6f6 !important;
+            color: white !important;
             transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(41, 182, 246, 0.3);
+            box-shadow: 0 3px 6px rgba(41, 182, 246, 0.3);
         }
 
+        /* === 响应式适配 === */
+        /* 平板：变2列 */
+        @media (max-width: 900px) {
+            .nav-content {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+        /* 手机：变1列 */
+        @media (max-width: 600px) {
+            .nav-content {
+                grid-template-columns: 1fr !important;
+            }
+            .jj-list-con {
+                grid-template-columns: repeat(4, 1fr) !important; /* 手机上按钮排4个或者3个 */
+            }
+            .logo-box {
+                flex-direction: column !important;
+            }
+            .logo-left img {
+                margin: 0 0 10px 0 !important;
+            }
+        }
+        
         /* 底部 */
         .footer {
             text-align: center;
-            margin-top: 40px;
-            padding-bottom: 20px;
+            margin-top: 50px;
             color: #90a4ae;
+            clear: both !important;
         }
     </style>
 
@@ -178,7 +228,7 @@
     <!-- slogan start -->
     <div class="logo-box">
       <div class="logo-left">
-        <img src="./static/img/logo.gif" alt="logo" style="height: 80px; width: auto;">
+        <img src="./static/img/logo.gif" alt="logo">
       </div>
       <div class="logo-right">
         <span>只言片语，可寻万物</span>
@@ -200,8 +250,8 @@
                 placeholder="不懂么？不懂就搜，给老子搜！">
           <div class="clear-keyword" id="clear_keyword" title="清空">x</div>
         </div>
-        <!--  搜索引擎 start  -->
-        <ul id="search_methods" class="search-methods">
+        <!--  搜索引擎 start (隐藏备用选项，保持界面整洁，原逻辑保留) -->
+        <ul id="search_methods" class="search-methods" style="display:none;">
           <li data-type="google" class="search-item google">谷歌</li>
           <li data-type="baidu" class="search-item baidu">百度</li>
           <li data-type="bing" class="search-item bing">必应</li>
@@ -209,12 +259,7 @@
           <li data-type="sogou" class="search-item sogou">搜狗</li>
           <li data-type="wangpan" class="search-item wangpan">网盘搜索</li>
         </ul>
-        <!--  搜索引擎 end  -->
-        <!--  搜索结果 start -->
-        <ul id="search_result" class="search-result">
-          <!--<li class="result-item"></li>-->
-        </ul>
-        <!--  搜索结果 end -->
+        <ul id="search_result" class="search-result"></ul>
       </div>
       <input class="search-submit" value="寻一下" id="search_submit" type="submit">
     </div>
