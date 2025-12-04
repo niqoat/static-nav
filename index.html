@@ -1,13 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>只言片语导航 &nbsp;- 不懂就搜，一搜就懂</title>
     <meta name="keywords" content="只言片语导航,不懂就搜,实用网址,主页导航,简单网址导航">
     <meta name="description" content="只言片语，可寻万物！"/>
     <link rel="shortcut icon" href="static/img/favicon.ico">
+    <!-- 原有样式表保留 -->
     <link href="static/css/style.css" rel="stylesheet" type="text/css">
+    
+    <!-- === 优化美化样式 (Added by AI) === -->
+    <style>
+        /* 1. 全局背景优化：淡青色渐变 */
+        body {
+            background-color: #e0f7fa;
+            background-image: linear-gradient(135deg, #e0f7fa 0%, #e8f5e9 100%);
+            background-attachment: fixed; /* 背景固定，滚动时更顺滑 */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #333;
+        }
+
+        /* 2. 布局容器优化 */
+        .inner-center {
+            padding-top: 20px;
+        }
+
+        /* 3. Logo区域微调 */
+        .logo-box {
+            margin-bottom: 30px;
+        }
+        .logo-right span {
+            color: #006064; /* 深青色文字 */
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        }
+
+        /* 4. 搜索框美化 */
+        .input-wrap {
+            border: 2px solid #b2ebf2 !important; /* 青色边框 */
+            background-color: rgba(255, 255, 255, 0.9) !important;
+            border-radius: 50px !important; /* 圆润边角 */
+            box-shadow: 0 5px 15px rgba(0, 96, 100, 0.1); /* 柔和阴影 */
+            transition: all 0.3s;
+        }
+        .input-wrap:hover, .input-wrap:focus-within {
+            box-shadow: 0 8px 20px rgba(0, 96, 100, 0.2);
+            border-color: #00bcd4 !important;
+        }
+        .search-submit {
+            background-color: #00bcd4 !important; /* 按钮变青色 */
+            border-radius: 0 50px 50px 0 !important;
+            color: white !important;
+            cursor: pointer;
+        }
+        .search-submit:hover {
+            background-color: #0097a7 !important;
+        }
+
+        /* 5. 导航分类卡片化 */
+        .jj-list {
+            background: rgba(255, 255, 255, 0.6); /* 半透明白色卡片 */
+            backdrop-filter: blur(5px); /* 毛玻璃效果 */
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border: 1px solid #e0f2f1;
+            transition: transform 0.3s;
+        }
+        .jj-list:hover {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+
+        /* 标题美化 */
+        .jj-list-tit {
+            color: #006064;
+            font-weight: 600;
+            border-bottom: 1px dashed #b2dfdb; /* 虚线分隔 */
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        /* 链接美化 */
+        .jj-list-con li {
+            display: inline-block;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        .jj-list-link {
+            color: #555;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+        
+        /* 鼠标悬停链接效果 */
+        .jj-list-link:hover {
+            background-color: #26c6da; /* 亮青色 */
+            color: #fff;
+            text-decoration: none;
+            transform: translateY(-2px); /* 微微上浮 */
+            box-shadow: 0 4px 8px rgba(38, 198, 218, 0.4);
+        }
+
+        /* 底部 */
+        .footer {
+            margin-top: 40px;
+            color: #78909c;
+        }
+    </style>
+
     <!-- 百度统计代码 -->
     <script>
         var _hmt = _hmt || [];
@@ -34,7 +138,7 @@
     <!-- slogan end -->
     
     <!-- 搜索框 start -->
-    <div id="search_form" class="search-section"target="_blank">
+    <div id="search_form" class="search-section" target="_blank">
       <div class="search-left">
         <div id="search_logo" data-type="google" class="search-logo"></div>
         <div class="input-wrap">
@@ -126,8 +230,7 @@
           <li><a href="https://www.ghxi.com/category/all" class="jj-list-link" target="_blank">果核剥壳</a></li>
           <li><a href="https://greenvideo.cc/" class="jj-list-link" target="_blank">流媒体</a></li>
           <li><a href="https://ip.skk.moe/" class="jj-list-link" target="_blank">IP查询</a></li>
-          <li>  <a href="https://web.telegram.org/" class="jj-list-link" target="_blank">电报网页</a>
-</li>
+          <li><a href="https://web.telegram.org/" class="jj-list-link" target="_blank">电报网页</a></li>
 
         </ul>
       </div>
@@ -156,7 +259,7 @@
           <li><a href="https://www.taobao.com/" class="jj-list-link" target="_blank">淘宝</a></li>
           <li><a href="https://www.jd.com/" class="jj-list-link" target="_blank">京东</a></li>
           <li><a href="https://www.suning.com/" class="jj-list-link" target="_blank">XXXX</a></li>
-          <li><a href="https://www.smzdm.com
+          <!-- 修复了此处原有的HTML语法错误 -->
           <li><a href="https://www.smzdm.com/" class="jj-list-link" target="_blank">XXXX</a></li>
           <li><a href="https://www.huijiwiki.com/wiki/" class="jj-list-link" target="_blank">灰机wiki</a></li>
           <li><a href="https://www.ceve-market.org/index/" class="jj-list-link" target="_blank">国服市场中心</a></li>
@@ -170,7 +273,7 @@
   <p>
    <a href="https://github.com/TopVitamin/static-nav" target="_blank"> <img src="./static/css/img/github.png" alt="" height="20" width="20"></a>
   </p>
-  <p style="margin-top:8px;"> <a href="http://pm.budong.me/" style="color:#8C8C8C;" target="_blank">Copyright © 2019 Hosted by 只言片语</a></p>
+  <p style="margin-top:8px;"> <a href="http://pm.budong.me/" style="color:#607d8b;" target="_blank">Copyright © 2019 Hosted by 只言片语</a></p>
  
 </footer>
 <script src="./static/js/jquery.min.js"></script>
