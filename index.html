@@ -9,12 +9,12 @@
     <!-- 保留原有样式文件 -->
     <link href="static/css/style.css" rel="stylesheet" type="text/css">
     
-    <!-- === AI 强力修复样式 (使用 Grid 强制布局) === -->
+    <!-- === AI 最终优化样式 (柔和配色 + 顶部修正) === -->
     <style>
-        /* 1. 全局背景优化 */
+        /* 1. 全局背景：保持你喜欢的淡青色，但更加通透 */
         body {
             background-color: #e0f7fa;
-            background-image: linear-gradient(180deg, #e0f7fa 0%, #e8f5e9 100%);
+            background-image: linear-gradient(180deg, #e0f7fa 0%, #f1f8e9 100%);
             background-attachment: fixed;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             color: #333;
@@ -23,122 +23,145 @@
         /* 2. 布局容器修正 */
         .inner-center {
             width: 100% !important;
-            max-width: 1200px !important; /* 限制最大宽度，防止在大屏太宽 */
+            max-width: 1200px !important;
             margin: 0 auto !important;
-            padding: 20px 10px !important;
+            padding: 40px 20px 20px 20px !important; /* 顶部增加留白 */
             box-sizing: border-box !important;
         }
 
-        /* 3. Logo 和 Slogan 居中 */
+        /* === 3. 顶部区域修正 (去除图片，文字居中) === */
         .logo-box {
             display: flex !important;
-            flex-direction: row !important;
-            justify-content: center !important;
+            justify-content: center !important; /* 水平居中 */
             align-items: center !important;
-            margin-bottom: 30px !important;
-            float: none !important; /* 清除原有浮动 */
+            margin-bottom: 50px !important; /* 拉开与搜索框的距离 */
+            float: none !important;
+            position: relative;
         }
-        .logo-left img {
-            height: 60px !important;
-            width: auto !important;
-            margin-right: 15px;
+        
+        /* 这里的 CSS 会隐藏掉可能残留的 logo-left，双重保险 */
+        .logo-left {
+            display: none !important; 
         }
+
+        .logo-right {
+            text-align: center !important;
+            width: 100% !important;
+        }
+
         .logo-right span {
-            font-size: 26px !important;
-            color: #006064 !important;
-            font-weight: bold;
-            letter-spacing: 2px;
+            font-size: 36px !important; /* 加大字体 */
+            color: #006064 !important; /* 深青色，更有质感 */
+            font-weight: 700;
+            letter-spacing: 8px; /* 增加字间距，更显大气 */
+            text-shadow: 0 2px 4px rgba(0, 96, 100, 0.1); /* 微微的文字投影 */
+            display: inline-block;
         }
 
         /* 4. 搜索框美化 */
         .search-section {
             width: 100% !important;
-            max-width: 700px !important;
-            margin: 0 auto 40px auto !important;
+            max-width: 680px !important;
+            margin: 0 auto 50px auto !important; /* 增加底部间距 */
             position: relative;
             float: none !important;
         }
         .input-wrap {
             border: 2px solid #b2dfdb !important;
-            background-color: #fff !important;
-            border-radius: 8px !important;
-            box-shadow: 0 4px 12px rgba(0, 96, 100, 0.1);
-            height: 50px !important;
+            background-color: rgba(255, 255, 255, 0.9) !important;
+            border-radius: 12px !important; /* 更圆润一点 */
+            box-shadow: 0 8px 20px rgba(0, 96, 100, 0.08); /* 投影更柔和 */
+            height: 54px !important;
             display: flex !important;
             align-items: center !important;
             width: 100% !important;
             box-sizing: border-box !important;
+            transition: all 0.3s ease;
+        }
+        .input-wrap:hover, .input-wrap:focus-within {
+            border-color: #26c6da !important;
+            box-shadow: 0 10px 25px rgba(38, 198, 218, 0.15);
+            transform: translateY(-2px);
         }
         .search-input {
             border: none !important;
             height: 100% !important;
             flex-grow: 1 !important;
-            padding: 0 15px !important;
+            padding: 0 20px !important;
             font-size: 16px !important;
             background: transparent !important;
             outline: none !important;
+            color: #455a64 !important;
         }
         .search-submit {
-            background-color: #2979ff !important;
-            border-radius: 0 8px 8px 0 !important;
+            background: linear-gradient(135deg, #42a5f5, #1e88e5) !important; /* 渐变蓝按钮 */
+            border-radius: 0 10px 10px 0 !important;
             color: white !important;
-            height: 50px !important; /* 确保高度一致 */
-            width: 100px !important;
+            height: 54px !important;
+            width: 110px !important;
             border: none !important;
             font-size: 16px !important;
+            font-weight: bold;
+            letter-spacing: 2px;
             cursor: pointer;
             margin: 0 !important;
             position: absolute !important;
             right: 0;
             top: 0;
+            box-shadow: -2px 0 10px rgba(30, 136, 229, 0.2);
         }
         .search-submit:hover {
-            background-color: #1565c0 !important;
+            background: linear-gradient(135deg, #1e88e5, #1565c0) !important;
         }
 
-        /* === 5. 核心布局修复：使用 Grid 彻底重构 === */
-        
-        /* 强制主容器为 Grid 布局，3列 */
+        /* === 5. 核心布局 (Grid System) === */
         .nav-content {
             display: grid !important;
-            grid-template-columns: repeat(3, 1fr) !important; /* 强制3列等宽 */
-            gap: 20px !important; /* 卡片间距 */
+            grid-template-columns: repeat(3, 1fr) !important; 
+            gap: 25px !important; /* 拉大卡片间距 */
             width: 100% !important;
             box-sizing: border-box !important;
-            /* 清除旧样式干扰 */
             float: none !important;
             height: auto !important;
         }
 
-        /* 强制卡片样式 */
+        /* 卡片样式优化 */
         .jj-list {
-            width: auto !important; /* 自动填充格子 */
+            width: auto !important;
             float: none !important;
             margin: 0 !important;
-            background: rgba(255, 255, 255, 0.9) !important;
-            border-radius: 10px !important;
-            padding: 20px !important;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;
-            border: 1px solid #e0f2f1 !important;
-            height: fit-content !important; /* 高度自适应内容 */
+            background: #ffffff !important; /* 纯白背景 */
+            border-radius: 12px !important;
+            padding: 25px 20px !important;
+            /* 柔和的阴影，不生硬 */
+            box-shadow: 0 10px 30px rgba(0, 96, 100, 0.04) !important;
+            border: 1px solid rgba(255, 255, 255, 0.5) !important;
+            height: fit-content !important;
+            transition: transform 0.3s ease;
+        }
+        .jj-list:hover {
+            transform: translateY(-5px); /* 悬浮效果 */
         }
 
         /* 分类标题 */
         .jj-list-tit {
-            font-size: 16px !important;
-            color: #37474f !important;
+            font-size: 17px !important;
+            color: #263238 !important; /* 深灰偏青 */
             font-weight: 700 !important;
-            margin-bottom: 15px !important;
-            border-bottom: 1px solid #eee !important;
-            padding-bottom: 8px !important;
+            margin-bottom: 20px !important;
+            border-bottom: none !important; /* 去掉下划线，更干净 */
+            padding-bottom: 0 !important;
             text-align: left !important;
+            display: flex;
+            align-items: center;
         }
+        /* 标题前的图标微调（如果有的话，不改动原有结构，只通过CSS微调间距） */
 
-        /* 强制内部按钮为 Grid 布局，3列 */
+        /* 内部按钮布局 */
         .jj-list-con {
             display: grid !important;
-            grid-template-columns: repeat(3, 1fr) !important; /* 强制3列 */
-            gap: 10px !important; /* 按钮间距 */
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 12px !important; /* 按钮间距 */
             padding: 0 !important;
             margin: 0 !important;
             list-style: none !important;
@@ -153,60 +176,56 @@
             float: none !important;
         }
 
-        /* 按钮样式 */
+        /* === 6. 按钮色差修复 (关键点) === */
         .jj-list-link {
             display: flex !important;
             justify-content: center;
             align-items: center;
             width: 100% !important;
-            height: 36px !important;
-            background-color: #e1f5fe !important; /* 浅蓝底 */
-            color: #455a64 !important;
-            border-radius: 4px !important;
+            height: 40px !important; /* 稍微增高 */
+            
+            /* 【修改点】背景色改为极淡的青灰色，接近白色，消除突兀感 */
+            background-color: #f5fafa !important; 
+            border: 1px solid #eef6f6 !important; /* 极淡的边框 */
+            
+            color: #546e7a !important; /* 字体颜色改为柔和的灰蓝色 */
+            border-radius: 8px !important;
             font-size: 13px !important;
             text-decoration: none !important;
-            transition: all 0.2s !important;
+            transition: all 0.2s ease !important;
             white-space: nowrap !important;
             overflow: hidden !important;
             box-sizing: border-box !important;
             padding: 0 5px !important;
         }
 
+        /* 鼠标移上去才显示亮色 */
         .jj-list-link:hover {
-            background-color: #29b6f6 !important;
+            background-color: #26c6da !important; /* 亮青色 */
             color: white !important;
-            transform: translateY(-2px);
-            box-shadow: 0 3px 6px rgba(41, 182, 246, 0.3);
+            border-color: #26c6da !important;
+            box-shadow: 0 5px 15px rgba(38, 198, 218, 0.3);
+            transform: scale(1.02);
         }
 
         /* === 响应式适配 === */
-        /* 平板：变2列 */
         @media (max-width: 900px) {
-            .nav-content {
-                grid-template-columns: repeat(2, 1fr) !important;
-            }
+            .nav-content { grid-template-columns: repeat(2, 1fr) !important; }
         }
-        /* 手机：变1列 */
         @media (max-width: 600px) {
-            .nav-content {
-                grid-template-columns: 1fr !important;
-            }
-            .jj-list-con {
-                grid-template-columns: repeat(4, 1fr) !important; /* 手机上按钮排4个或者3个 */
-            }
-            .logo-box {
-                flex-direction: column !important;
-            }
-            .logo-left img {
-                margin: 0 0 10px 0 !important;
-            }
+            .nav-content { grid-template-columns: 1fr !important; }
+            .jj-list-con { grid-template-columns: repeat(3, 1fr) !important; } /* 手机上保持3列按钮 */
+            .logo-right span { font-size: 24px !important; letter-spacing: 4px; }
+            .search-submit { width: 80px !important; }
         }
         
         /* 底部 */
         .footer {
             text-align: center;
-            margin-top: 50px;
+            margin-top: 60px;
+            padding-bottom: 20px;
             color: #90a4ae;
+            font-size: 12px;
             clear: both !important;
         }
     </style>
@@ -225,11 +244,9 @@
 <body>
 <div class="inner-center main">
   <div class="content-inside">
-    <!-- slogan start -->
+    <!-- slogan start (已修改：去除图片，文字居中) -->
     <div class="logo-box">
-      <div class="logo-left">
-        <img src="./static/img/logo.gif" alt="logo">
-      </div>
+      <!-- 删除了 logo-left -->
       <div class="logo-right">
         <span>只言片语，可寻万物</span>
       </div>
@@ -250,7 +267,7 @@
                 placeholder="不懂么？不懂就搜，给老子搜！">
           <div class="clear-keyword" id="clear_keyword" title="清空">x</div>
         </div>
-        <!--  搜索引擎 start (隐藏备用选项，保持界面整洁，原逻辑保留) -->
+        <!--  搜索引擎 start (隐藏备用选项，保持界面整洁) -->
         <ul id="search_methods" class="search-methods" style="display:none;">
           <li data-type="google" class="search-item google">谷歌</li>
           <li data-type="baidu" class="search-item baidu">百度</li>
@@ -290,85 +307,4 @@
           <li><a href="https://gemini.google.com/app" class="jj-list-link" target="_blank">Gemini</a></li>
           <li><a href="https://www.douyin.com" class="jj-list-link" target="_blank">抖音</a></li>
           <li><a href="https://voice.google.com/u/0/messages" class="jj-list-link" target="_blank">GV号</a></li>
-          <li><a href="https://www.123pan.com/" class="jj-list-link" target="_blank">123网盘</a></li>
-          <li><a href="https://photos.google.com/" class="jj-list-link" target="_blank">谷歌相册</a></li>
-          <li><a href="https://oatniq.blogspot.com/" class="jj-list-link" target="_blank">我的博客</a></li>
-          <li><a href="https://github.com/" class="jj-list-link" target="_blank">Github</a></li>
-          <li><a href="https://chat.openai.com" class="jj-list-link" target="_blank">ChatGpt</a></li>
-        </ul>
-      </div>
-      <!-- 皮 · 网络硬盘 -->
-      <div class="jj-list">
-        <div class="jj-list-tit">💾 皮 · 网络硬盘</div>
-        <ul class="jj-list-con">
-          <li><a href="https://drive.google.com/drive/my-drive" class="jj-list-link" target="_blank">谷歌网盘</a></li>
-          <li><a href="https://earth.google.com/web/" class="jj-list-link" target="_blank">谷歌地球</a></li>
-          <li><a href="https://www.olevod.com/" class="jj-list-link" target="_blank">欧乐影院</a></li>
-          <li><a href="https://www.bilibili.com/" class="jj-list-link" target="_blank">哔哩哔哩</a></li>
-          <li><a href="https://www.iyf.tv/" class="jj-list-link" target="_blank">爱一帆</a></li>
-          <li><a href="https://www.genspark.ai/" class="jj-list-link" target="_blank">genspark</a></li>
-          <li><a href="https://www.tiktok.com/" class="jj-list-link" target="_blank">tiktok</a></li>
-          <li><a href="https://grok.com/" class="jj-list-link" target="_blank">grok3</a></li>
-          <li><a href="http://www.zimuzu.tv/" class="jj-list-link" target="_blank">XXXX</a></li>
-        </ul>
-      </div>
-      <!-- 笑 · 生产工具 -->
-      <div class="jj-list">
-        <div class="jj-list-tit">🛠️ 笑 · 生产工具</div>
-        <ul class="jj-list-con">
-          <li><a href="https://www.x6d.com/" class="jj-list-link" target="_blank">小刀娱乐</a></li>
-          <li><a href="https://www.aies.cn/" class="jj-list-link" target="_blank">简体繁体</a></li>
-          <li><a href="https://www.flickr.com/" class="jj-list-link" target="_blank">flickr</a></li>
-          <li><a href="https://websim.ai//" class="jj-list-link" target="_blank">websim</a></li>
-          <li><a href="https://dash.cloudflare.com/" class="jj-list-link" target="_blank">cloudflare</a></li>
-          <li><a href="https://www.ghxi.com/category/all" class="jj-list-link" target="_blank">果核剥壳</a></li>
-          <li><a href="https://greenvideo.cc/" class="jj-list-link" target="_blank">流媒体</a></li>
-          <li><a href="https://ip.skk.moe/" class="jj-list-link" target="_blank">IP查询</a></li>
-          <li><a href="https://web.telegram.org/" class="jj-list-link" target="_blank">电报网页</a></li>
-        </ul>
-      </div>
-      <!-- 嘻 · 导航应用 -->
-      <div class="jj-list">
-        <div class="jj-list-tit">🧭 嘻 · 导航应用</div>
-        <ul class="jj-list-con">
-          <li><a href="https://map.baidu.com/" class="jj-list-link" target="_blank">百度地图</a></li>
-          <li><a href="http://www.google.cn/maps" class="jj-list-link" target="_blank">谷歌地图</a></li>
-          <li><a href="https://www.amap.com/" class="jj-list-link" target="_blank">高德地图</a></li>
-          <li><a href="https://aistudio.google.com/" class="jj-list-link" target="_blank">aistudio</a></li>
-          <li><a href="https://tool.lu/" class="jj-list-link" target="_blank">XXXX</a></li>
-          <li><a href="http://www.alloyteam.com/nav/" class="jj-list-link" target="_blank">XXXX</a></li>
-          <li><a href="http://www.99baiduyun.com/" class="jj-list-link" target="_blank">XXXX</a></li>
-          <li><a href="https://cli.im/" class="jj-list-link" target="_blank">二维码</a></li>
-          <li><a href="http://www.qinms.com/webapp/barcode/index.aspx" class="jj-list-link" target="_blank">条形码</a></li>
-        </ul>
-      </div>
-      <!-- 嘻 · 网购平台 -->
-      <div class="jj-list">
-        <div class="jj-list-tit">🛒 嘻 · 网购平台</div>
-        <ul class="jj-list-con">
-          <li><a href="http://www.dytt8.net/" class="jj-list-link" target="_blank">电影天堂</a></li>
-          <li><a href="https://www.dd373.com/" class="jj-list-link" target="_blank">DD373</a></li>
-          <li><a href="http://www.1688.com/" class="jj-list-link" target="_blank">阿里巴巴</a></li>
-          <li><a href="https://www.taobao.com/" class="jj-list-link" target="_blank">淘宝</a></li>
-          <li><a href="https://www.jd.com/" class="jj-list-link" target="_blank">京东</a></li>
-          <li><a href="https://www.suning.com/" class="jj-list-link" target="_blank">XXXX</a></li>
-          <li><a href="https://www.smzdm.com/" class="jj-list-link" target="_blank">XXXX</a></li>
-          <li><a href="https://www.huijiwiki.com/wiki/" class="jj-list-link" target="_blank">灰机wiki</a></li>
-          <li><a href="https://www.ceve-market.org/index/" class="jj-list-link" target="_blank">国服市场中心</a></li>
-        </ul>
-      </div>
-    </div>
-    <!-- 导航地址 end -->
-  </div>
-</div>
-<footer class="inner-center footer">
-  <p>
-   <a href="https://github.com/TopVitamin/static-nav" target="_blank"> <img src="./static/css/img/github.png" alt="GitHub" height="20" width="20"></a>
-  </p>
-  <p style="margin-top:8px;"> <a href="http://pm.budong.me/" style="color:#607d8b;" target="_blank">Copyright © 2019 Hosted by 只言片语</a></p>
-</footer>
-<script src="./static/js/jquery.min.js"></script>
-<script src="./static/js/keyword.js"></script>
-
-</body>
-</html>
+          <li><a href="https://www.123pan.com/" class="jj-list-link" target
